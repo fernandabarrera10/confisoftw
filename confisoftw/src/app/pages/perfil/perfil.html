@@ -1,1 +1,42 @@
-<p>perfil works!</p>
+<app-navbar></app-navbar>
+
+<section class="perfil-container">
+
+  <div class="perfil-card">
+
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+      alt="perfil"
+    >
+
+    <h1>
+      {{ usuario.nombre }}
+      {{ usuario.apellido }}
+    </h1>
+
+    <div class="info">
+
+      <p>
+        <strong>Usuario:</strong>
+        {{ usuario.username }}
+      </p>
+
+      <p>
+        <strong>Correo:</strong>
+        {{ usuario.correo }}
+      </p>
+
+      <p>
+        <strong>Teléfono:</strong>
+        {{ usuario.telefono }}
+      </p>
+
+    </div>
+
+    <button>
+      Editar Perfil
+    </button>
+
+  </div>
+
+</section>

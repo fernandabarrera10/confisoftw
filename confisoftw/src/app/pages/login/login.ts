@@ -1,9 +1,80 @@
 import { Component } from '@angular/core';
 
+import { FormsModule } from '@angular/forms';
+
+import { Router } from '@angular/router';
+
+import { Navbar } from '../../components/navbar/navbar';
+
+import { Auth } from '../../services/auth';
+
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [FormsModule, Navbar],
   templateUrl: './login.html',
-  styleUrl: './login.css',
+  styleUrl: './login.css'
 })
-export class Login {}
+export class Login {
+
+  usuario = '';
+
+  password = '';
+
+  constructor(
+    private auth: Auth,
+    private router: Router
+  ){}
+
+  ingresar(){
+
+    if(
+      this.usuario.trim() === '' ||
+      this.password.trim() === ''
+    ){
+
+      alert(
+        'Debes completar usuario y contraseña'
+      );
+
+      return;
+
+    }
+
+    if(this.password.length < 6){
+
+      alert(
+        'La contraseña debe tener mínimo 6 caracteres'
+      );
+
+      return;
+
+    }
+
+    const acceso = this.auth.login(
+      this.usuario,
+      this.password
+    );
+
+    if(acceso){
+
+      if(this.auth.esAdmin()){
+
+        this.router.navigate(['/admin']);
+
+      }else{
+
+        this.router.navigate(['/productos']);
+
+      }
+
+    }else{
+
+      alert(
+        'Usuario o contraseña incorrectos'
+      );
+
+    }
+
+  }
+
+}

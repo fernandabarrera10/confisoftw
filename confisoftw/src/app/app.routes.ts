@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 
-import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { PerfilComponent } from './pages/perfil/perfil.component';
-import { ProductosComponent } from './pages/productos/productos.component';
+import { HomeComponent } from './pages/home/home';
+import { Login } from './pages/login/login';
+import { Register} from './pages/register/register';
+import { Perfil } from './pages/perfil/perfil';
+import { Productos } from './pages/productos/productos';
 
 export const routes: Routes = [
 
@@ -15,22 +15,22 @@ export const routes: Routes = [
 
   {
     path: 'login',
-    component: LoginComponent
+    component: Login
   },
 
   {
     path: 'register',
-    component: RegisterComponent
+    component: Register
   },
 
   {
     path: 'perfil',
-    component: PerfilComponent
+    component: Perfil
   },
 
   {
     path: 'productos',
-    component: ProductosComponent
+    component: Productos
   }
 
 ];

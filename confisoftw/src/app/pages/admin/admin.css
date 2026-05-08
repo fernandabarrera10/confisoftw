@@ -1,0 +1,44 @@
+.admin-container{
+  min-height:100vh;
+
+  background:#fbd5e5;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.admin-card{
+  background:white;
+
+  padding:40px;
+
+  border-radius:20px;
+
+  width:450px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:20px;
+
+  text-align:center;
+
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.admin-card button{
+  padding:15px;
+
+  border:none;
+
+  border-radius:10px;
+
+  background:#ff69b4;
+
+  color:white;
+
+  cursor:pointer;
+
+  font-size:18px;
+}

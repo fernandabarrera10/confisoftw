@@ -1,1 +1,116 @@
-<p>register works!</p>
+<app-navbar></app-navbar>
+
+<section class="register-container">
+
+  <form
+    class="register-card"
+    #registerForm="ngForm"
+    (ngSubmit)="registrar()"
+  >
+
+    <h1>
+      Crear Perfil
+    </h1>
+
+    <input
+      type="text"
+      placeholder="Nombre"
+      [(ngModel)]="nombre"
+      name="nombre"
+      required
+      #nombreInput="ngModel"
+    >
+
+    @if(nombreInput.invalid && nombreInput.touched){
+      <small class="error">
+        El nombre es obligatorio
+      </small>
+    }
+
+    <input
+      type="text"
+      placeholder="Apellido"
+      [(ngModel)]="apellido"
+      name="apellido"
+      required
+      #apellidoInput="ngModel"
+    >
+
+    @if(apellidoInput.invalid && apellidoInput.touched){
+      <small class="error">
+        El apellido es obligatorio
+      </small>
+    }
+
+    <input
+      type="email"
+      placeholder="Correo"
+      [(ngModel)]="correo"
+      name="correo"
+      required
+      email
+      #correoInput="ngModel"
+    >
+
+    @if(correoInput.invalid && correoInput.touched){
+      <small class="error">
+        Ingresa un correo válido
+      </small>
+    }
+
+    <input
+      type="text"
+      placeholder="Teléfono"
+      [(ngModel)]="telefono"
+      name="telefono"
+      required
+      #telefonoInput="ngModel"
+    >
+
+    @if(telefonoInput.invalid && telefonoInput.touched){
+      <small class="error">
+        El teléfono es obligatorio
+      </small>
+    }
+
+    <input
+      type="text"
+      placeholder="Usuario"
+      [(ngModel)]="usuario"
+      name="usuario"
+      required
+      #usuarioInput="ngModel"
+    >
+
+    @if(usuarioInput.invalid && usuarioInput.touched){
+      <small class="error">
+        El usuario es obligatorio
+      </small>
+    }
+
+    <input
+      type="password"
+      placeholder="Contraseña"
+      [(ngModel)]="password"
+      name="password"
+      required
+      minlength="6"
+      #passwordInput="ngModel"
+    >
+
+    @if(passwordInput.invalid && passwordInput.touched){
+      <small class="error">
+        La contraseña debe tener mínimo 6 caracteres
+      </small>
+    }
+
+    <button
+      type="submit"
+      [disabled]="registerForm.invalid"
+    >
+      Crear Perfil
+    </button>
+
+  </form>
+
+</section>
