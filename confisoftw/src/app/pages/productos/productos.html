@@ -25,9 +25,25 @@
           $ {{ producto.precio }}
         </p>
 
-        <button>
-          Agregar al carrito
-        </button>
+        <div class="cantidad">
+
+          <button
+            (click)="disminuir(producto)"
+          >
+            -
+          </button>
+
+          <span>
+            {{ obtenerCantidad(producto) }}
+          </span>
+
+          <button
+            (click)="agregarAlCarrito(producto)"
+          >
+            +
+          </button>
+
+        </div>
 
       </div>
 

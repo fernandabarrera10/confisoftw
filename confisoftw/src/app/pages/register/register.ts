@@ -1,13 +1,22 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
 import { Navbar } from '../../components/navbar/navbar';
 
 @Component({
   selector: 'app-register',
-  imports: [FormsModule, Navbar],
+
+  standalone: true,
+
+  imports: [
+    FormsModule,
+    Navbar
+  ],
+
   templateUrl: './register.html',
   styleUrl: './register.css'
 })
+
 export class Register {
 
   nombre = '';
@@ -27,6 +36,8 @@ export class Register {
       usuario: this.usuario,
       password: this.password
     });
+
+    alert('Usuario registrado correctamente');
 
   }
 

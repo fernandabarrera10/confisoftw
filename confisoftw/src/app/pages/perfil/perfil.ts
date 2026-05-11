@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { Navbar } from '../../components/navbar/navbar';
 
-import { Auth } from '../../services/auth';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-perfil',
@@ -15,7 +15,7 @@ import { Auth } from '../../services/auth';
 export class Perfil {
 
   constructor(
-    private auth: Auth,
+    private auth: AuthService,
     private router: Router
   ){
 

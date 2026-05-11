@@ -1,0 +1,68 @@
+.carrito-container{
+
+  padding:40px;
+
+  background:#fbd5e5;
+
+  min-height:100vh;
+
+}
+
+.productos{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit, minmax(250px,1fr));
+
+  gap:20px;
+
+}
+
+.card{
+
+  background:white;
+
+  padding:20px;
+
+  border-radius:20px;
+
+  text-align:center;
+
+}
+
+.card img{
+
+  width:100%;
+
+  height:200px;
+
+  object-fit:cover;
+
+  border-radius:10px;
+
+}
+
+button{
+
+  background:#ff69b4;
+
+  color:white;
+
+  border:none;
+
+  padding:10px 20px;
+
+  border-radius:10px;
+
+  cursor:pointer;
+
+}
+
+.comprar{
+
+  margin-top:20px;
+
+  font-size:20px;
+
+}

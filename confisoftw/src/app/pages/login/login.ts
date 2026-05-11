@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 import { Navbar } from '../../components/navbar/navbar';
 
-import { Auth } from '../../services/auth';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +14,7 @@ import { Auth } from '../../services/auth';
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
+
 export class Login {
 
   usuario = '';
@@ -21,7 +22,7 @@ export class Login {
   password = '';
 
   constructor(
-    private auth: Auth,
+    private auth: AuthService,
     private router: Router
   ){}
 
@@ -34,16 +35,6 @@ export class Login {
 
       alert(
         'Debes completar usuario y contraseña'
-      );
-
-      return;
-
-    }
-
-    if(this.password.length < 6){
-
-      alert(
-        'La contraseña debe tener mínimo 6 caracteres'
       );
 
       return;

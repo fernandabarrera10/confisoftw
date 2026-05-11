@@ -1,28 +1,36 @@
 .productos-container{
+
   min-height:100vh;
 
   background:#fbd5e5;
 
   padding:50px;
+
 }
 
 .productos-container h1{
+
   text-align:center;
+
   margin-bottom:40px;
 
   font-size:50px;
+
 }
 
 .productos-grid{
+
   display:grid;
 
   grid-template-columns:
   repeat(auto-fit,minmax(280px,1fr));
 
   gap:30px;
+
 }
 
 .card{
+
   background:white;
 
   border-radius:20px;
@@ -32,51 +40,95 @@
   box-shadow:0 10px 20px rgba(0,0,0,.2);
 
   transition:0.3s;
+
+  padding-bottom:20px;
+
 }
 
 .card:hover{
+
   transform:translateY(-10px);
+
 }
 
 .card img{
+
   width:100%;
+
   height:250px;
 
   object-fit:cover;
+
 }
 
 .card h2{
+
   padding:15px;
+
 }
 
 .card p{
+
   padding:0 15px;
+
   font-size:22px;
+
   font-weight:bold;
+
   color:#ff1493;
+
 }
 
-.card button{
-  margin:15px;
+.cantidad{
 
-  width:calc(100% - 30px);
+  display:flex;
 
-  padding:15px;
+  justify-content:center;
+
+  align-items:center;
+
+  gap:15px;
+
+  margin-top:20px;
+
+}
+
+.cantidad button{
+
+  width:45px;
+
+  height:45px;
 
   border:none;
 
+  border-radius:50%;
+
   background:#ff69b4;
+
   color:white;
 
-  border-radius:10px;
+  font-size:24px;
 
   cursor:pointer;
 
-  font-size:16px;
-
   transition:0.3s;
+
 }
 
-.card button:hover{
+.cantidad button:hover{
+
   background:#ff1493;
+
+}
+
+.cantidad span{
+
+  font-size:24px;
+
+  font-weight:bold;
+
+  min-width:30px;
+
+  text-align:center;
+
 }

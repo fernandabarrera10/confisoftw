@@ -1,10 +1,20 @@
 import { Routes } from '@angular/router';
 
 import { HomeComponent } from './pages/home/home';
+
 import { Login } from './pages/login/login';
-import { Register} from './pages/register/register';
+
+import { Register } from './pages/register/register';
+
 import { Perfil } from './pages/perfil/perfil';
+
 import { Productos } from './pages/productos/productos';
+
+import { Carrito } from './pages/carrito/carrito';
+
+import { authGuard } from './guards/auth-guard';
+
+import { Admin } from './pages/admin/admin';
 
 export const routes: Routes = [
 
@@ -25,12 +35,26 @@ export const routes: Routes = [
 
   {
     path: 'perfil',
-    component: Perfil
+    component: Perfil,
+    canActivate: [authGuard]
   },
 
   {
     path: 'productos',
-    component: Productos
+    component: Productos,
+    canActivate: [authGuard]
+  },
+
+  {
+    path: 'carrito',
+    component: Carrito,
+    canActivate: [authGuard]
+  },
+
+  {
+    path: 'admin',
+    component: Admin,
+    canActivate: [authGuard]
   }
 
 ];

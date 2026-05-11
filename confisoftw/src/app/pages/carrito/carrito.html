@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+
+<section class="carrito-container">
+
+  <h1>
+    Carrito de Compras
+  </h1>
+
+  @if(carritoService.carrito.length > 0){
+
+    <div class="productos">
+
+      @for(producto of carritoService.carrito; track producto){
+
+        <div class="card">
+
+          <img
+            [src]="producto.imagen"
+            [alt]="producto.nombre"
+          >
+
+          <h2>
+            {{ producto.nombre }}
+          </h2>
+
+          <p>
+            $ {{ producto.precio }}
+          </p>
+
+          <div class="cantidad">
+
+            <button
+              (click)="disminuir(producto)"
+            >
+              -
+            </button>
+
+            <span>
+              {{ producto.cantidad }}
+            </span>
+
+            <button
+              (click)="aumentar(producto)"
+            >
+              +
+            </button>
+
+          </div>
+
+          <h3>
+            Subtotal:
+            $ {{ producto.precio * producto.cantidad }}
+          </h3>
+
+        </div>
+
+      }
+
+    </div>
+
+    <h2 class="total">
+      Total:
+      $ {{ carritoService.total() }}
+    </h2>
+
+    <button
+      class="comprar"
+      (click)="finalizarCompra()"
+    >
+      Finalizar Compra
+    </button>
+
+  }@else{
+
+    <h2>
+      Tu carrito está vacío
+    </h2>
+
+  }
+
+</section>

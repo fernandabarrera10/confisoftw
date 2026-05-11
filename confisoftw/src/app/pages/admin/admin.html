@@ -2,27 +2,59 @@
 
 <section class="admin-container">
 
-  <div class="admin-card">
+  <h1>
+    Panel Administrador
+  </h1>
 
-    <h1>
-      Panel Administrador
-    </h1>
+  <div class="formulario">
 
-    <p>
-      Bienvenido administrador
-    </p>
+    <input
+      type="text"
+      placeholder="Nombre producto"
+      [(ngModel)]="nombre"
+    >
 
-    <button>
+    <input
+      type="number"
+      placeholder="Precio"
+      [(ngModel)]="precio"
+    >
+
+    <input
+      type="text"
+      placeholder="URL imagen"
+      [(ngModel)]="imagen"
+    >
+
+    <button
+      (click)="agregarProducto()"
+    >
       Agregar Producto
     </button>
 
-    <button>
-      Editar Productos
-    </button>
+  </div>
 
-    <button>
-      Eliminar Productos
-    </button>
+  <div class="productos">
+
+    @for(producto of productos; track producto){
+
+      <div class="card">
+
+        <img
+          [src]="producto.imagen"
+        >
+
+        <h2>
+          {{ producto.nombre }}
+        </h2>
+
+        <p>
+          $ {{ producto.precio }}
+        </p>
+
+      </div>
+
+    }
 
   </div>
 

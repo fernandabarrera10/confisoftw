@@ -1,31 +1,31 @@
 import { Component } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { Navbar } from '../../components/navbar/navbar';
 
-import { Auth } from '../../services/auth';
+import { CarritoService } from '../../services/carrito';
 
 @Component({
   selector: 'app-productos',
-  imports: [Navbar],
+
+  standalone: true,
+
+  imports: [
+    CommonModule,
+    Navbar
+  ],
+
   templateUrl: './productos.html',
-  styleUrl: './productos.css'
+
+  styleUrls: ['./productos.css']
 })
+
 export class Productos {
 
   constructor(
-    private auth: Auth,
-    private router: Router
-  ){
-
-    if(!this.auth.verificarLogin()){
-
-      this.router.navigate(['/login']);
-
-    }
-
-  }
+    public carritoService: CarritoService
+  ){}
 
   productos = [
 
@@ -45,14 +45,36 @@ export class Productos {
       nombre: 'Teclado RGB',
       precio: 180000,
       imagen: 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?q=80&w=1200&auto=format&fit=crop'
-    },
-
-    {
-      nombre: 'Mouse Gamer',
-      precio: 120000,
-      imagen: 'https://images.unsplash.com/photo-1527814050087-3793815479db?q=80&w=1200&auto=format&fit=crop'
     }
 
   ];
+
+  agregarAlCarrito(producto: any){
+
+    this.carritoService.agregarProducto(producto);
+
+  }
+
+  disminuir(producto: any){
+
+    this.carritoService.disminuirCantidad(producto);
+
+  }
+
+  obtenerCantidad(producto: any){
+
+    const encontrado =
+      this.carritoService.carrito.find(
+
+        (p: any) =>
+          p.nombre === producto.nombre
+
+      );
+
+    return encontrado
+      ? encontrado.cantidad
+      : 0;
+
+  }
 
 }
