@@ -4,9 +4,6 @@ import { CommonModule } from '@angular/common';
 
 import { Navbar } from '../../components/navbar/navbar';
 
-import { PedidosService }
-from '../../services/pedidos';
-
 @Component({
   selector: 'app-pedidos',
 
@@ -19,14 +16,15 @@ from '../../services/pedidos';
 
   templateUrl: './pedidos.html',
 
-  styleUrls: ['./pedidos.css']
+  styleUrl: './pedidos.css'
 })
 
 export class Pedidos {
 
-  constructor(
-    public pedidosService:
-    PedidosService
-  ){}
+  pedidos = JSON.parse(
 
-}
+    localStorage.getItem('pedidos') || '[]'
+
+  );
+
+} 

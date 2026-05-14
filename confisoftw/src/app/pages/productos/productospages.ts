@@ -1,13 +1,12 @@
-import { Injectable }
-from '@angular/core';
-
-import { CarritoService } from '../../services/carrito';
-
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
+import { FormsModule } from '@angular/forms';
+
 import { Navbar } from '../../components/navbar/navbar';
+
+import { CarritoService } from '../../services/carrito';
 
 import { ProductosService } from '../../services/productos';
 
@@ -18,6 +17,7 @@ import { ProductosService } from '../../services/productos';
 
   imports: [
     CommonModule,
+    FormsModule,
     Navbar
   ],
 
@@ -26,7 +26,9 @@ import { ProductosService } from '../../services/productos';
   styleUrl: './productos.css'
 })
 
-export class Productos implements OnInit {
+export class Productos {
+
+  busqueda = '';
 
   productos: any[] = [];
 
@@ -36,9 +38,7 @@ export class Productos implements OnInit {
 
     public productosService: ProductosService
 
-  ){}
-
-  ngOnInit(){
+  ){
 
     this.productos =
     this.productosService.obtenerProductos();
@@ -49,6 +49,25 @@ export class Productos implements OnInit {
 
     this.carritoService
     .agregarProducto(producto);
+
+  }
+
+  productosFiltrados(){
+
+    return this.productos.filter(
+
+      producto =>
+
+        producto.nombre
+        .toLowerCase()
+
+        .includes(
+
+          this.busqueda.toLowerCase()
+
+        )
+
+    );
 
   }
 

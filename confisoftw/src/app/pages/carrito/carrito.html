@@ -19,38 +19,52 @@
             [alt]="producto.nombre"
           >
 
-          <h2>
-            {{ producto.nombre }}
-          </h2>
+          <div class="info">
 
-          <p>
-            $ {{ producto.precio }}
-          </p>
+            <h2>
+              {{ producto.nombre }}
+            </h2>
 
-          <div class="cantidad">
+            <p class="precio">
+              $ {{ producto.precio }}
+            </p>
 
-            <button
-              (click)="disminuir(producto)"
-            >
-              -
-            </button>
+            <div class="cantidad">
 
-            <span>
-              {{ producto.cantidad }}
-            </span>
+              <button
+                class="menos"
+                (click)="disminuir(producto)"
+              >
+                -
+              </button>
 
-            <button
-              (click)="aumentar(producto)"
-            >
-              +
-            </button>
+              <span>
+                {{ producto.cantidad }}
+              </span>
+
+              <button
+                class="mas"
+                (click)="aumentar(producto)"
+              >
+                +
+              </button>
+
+            </div>
+
+            <h3 class="subtotal">
+
+              Subtotal:
+
+              $
+
+              {{
+                producto.precio *
+                producto.cantidad
+              }}
+
+            </h3>
 
           </div>
-
-          <h3>
-            Subtotal:
-            $ {{ producto.precio * producto.cantidad }}
-          </h3>
 
         </div>
 
@@ -58,23 +72,36 @@
 
     </div>
 
-    <h2 class="total">
-      Total:
-      $ {{ carritoService.total() }}
-    </h2>
+    <div class="final">
 
-    <button
-      class="comprar"
-      (click)="finalizarCompra()"
-    >
-      Finalizar Compra
-    </button>
+      <h2 class="total">
+
+        Total:
+        $
+
+        {{ carritoService.total() }}
+
+      </h2>
+
+      <button
+        class="comprar"
+        (click)="finalizarCompra()"
+      >
+        Finalizar Compra
+      </button>
+
+
+    </div>
 
   }@else{
 
-    <h2>
-      Tu carrito está vacío
-    </h2>
+    <div class="vacio">
+
+      <h2>
+        Tu carrito está vacío
+      </h2>
+
+    </div>
 
   }
 

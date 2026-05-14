@@ -12,17 +12,13 @@ export class CarritoService {
 
     const carritoGuardado =
 
-    localStorage.getItem(
-      'carrito'
-    );
+      localStorage.getItem('carrito');
 
     if(carritoGuardado){
 
       this.carrito =
 
-      JSON.parse(
-        carritoGuardado
-      );
+        JSON.parse(carritoGuardado);
 
     }
 
@@ -32,17 +28,27 @@ export class CarritoService {
 
     const encontrado =
 
-    this.carrito.find(
+      this.carrito.find(
 
-      (p: any) =>
+        (p: any) =>
 
-      p.nombre === producto.nombre
+        p.nombre === producto.nombre
 
-    );
+      );
 
     if(encontrado){
 
-      encontrado.cantidad++;
+      if(encontrado.cantidad < producto.stock){
+
+        encontrado.cantidad++;
+
+      }else{
+
+        alert(
+          'No hay más stock disponible'
+        );
+
+      }
 
     }else{
 
@@ -62,17 +68,29 @@ export class CarritoService {
 
   aumentarCantidad(producto: any){
 
-    producto.cantidad++;
+    if(producto.cantidad < producto.stock){
 
-    this.guardarCarrito();
+      producto.cantidad++;
+
+      this.guardarCarrito();
+
+    }else{
+
+      alert(
+        'Stock máximo alcanzado'
+      );
+
+    }
 
   }
 
   disminuirCantidad(producto: any){
 
-    producto.cantidad--;
+    if(producto.cantidad > 1){
 
-    if(producto.cantidad <= 0){
+      producto.cantidad--;
+
+    }else{
 
       this.eliminarProducto(producto);
 
@@ -86,13 +104,13 @@ export class CarritoService {
 
     this.carrito =
 
-    this.carrito.filter(
+      this.carrito.filter(
 
-      (p: any) =>
+        (p: any) =>
 
-      p !== producto
+        p !== producto
 
-    );
+      );
 
     this.guardarCarrito();
 
@@ -108,9 +126,9 @@ export class CarritoService {
 
         total +=
 
-        producto.precio *
+          producto.precio *
 
-        producto.cantidad;
+          producto.cantidad;
 
       }
 

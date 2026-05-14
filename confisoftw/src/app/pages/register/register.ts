@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 
-import { CommonModule } from '@angular/common';
-
 import { Router } from '@angular/router';
 
 import { Navbar } from '../../components/navbar/navbar';
@@ -12,23 +10,16 @@ import { UsuariosService } from '../../services/usuario';
 
 @Component({
   selector: 'app-register',
-
-  standalone: true,
-
-  imports: [
-    FormsModule,
-    CommonModule,
-    Navbar
-  ],
-
+  imports: [FormsModule, Navbar],
   templateUrl: './register.html',
-
-  styleUrls: ['./register.css']
+  styleUrl: './register.css'
 })
 
 export class Register {
 
   nombre = '';
+
+  apellido = '';
 
   usuario = '';
 
@@ -39,18 +30,43 @@ export class Register {
   telefono = '';
 
   constructor(
-
     public usuariosService: UsuariosService,
-
     private router: Router
-
   ){}
 
   registrar(){
 
+    if(
+      this.nombre === '' ||
+      this.apellido === '' ||
+      this.usuario === '' ||
+      this.password === '' ||
+      this.correo === '' ||
+      this.telefono === ''
+    ){
+
+      alert('Completa todos los campos');
+      return;
+
+    }
+
+    const existe =
+      this.usuariosService.usuarios.find(
+        (u: any) =>
+          u.usuario === this.usuario
+      );
+
+    if(existe){
+
+      alert('El usuario ya existe');
+      return;
+
+    }
+
     const nuevoUsuario = {
 
-      nombre: this.nombre,
+      nombre:
+        this.nombre + ' ' + this.apellido,
 
       usuario: this.usuario,
 
@@ -58,14 +74,25 @@ export class Register {
 
       correo: this.correo,
 
-      telefono: this.telefono
+      telefono: this.telefono,
+
+      rol: 'usuario',
+
+      estado: 'Activo',
+
+      pedidos: 0,
+
+      compras: 0,
+
+      foto:
+      'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
 
     };
 
     this.usuariosService
-    .agregarUsuario(nuevoUsuario);
+      .agregarUsuario(nuevoUsuario);
 
-    alert('Usuario registrado');
+    alert('Cuenta creada correctamente');
 
     this.router.navigate(['/login']);
 

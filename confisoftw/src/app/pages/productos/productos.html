@@ -3,52 +3,51 @@
 <section class="productos-container">
 
   <h1>
-    Productos
-  </h1>
-
-  <input
-    type="text"
-    placeholder="Buscar productos..."
-    [(ngModel)]="busqueda"
-    class="busqueda"
-  >
-
-  <div class="productos-grid">
-
-    @for(producto of productosFiltrados(); track producto){
-
-      <div class="card">
-
-        <img
-          [src]="producto.imagen"
-        >
-
-        <h2>
-          {{ producto.nombre }}
-        </h2>
-
-        <p>
-          {{ producto.categoria }}
-        </p>
-
-        <p>
-          Stock: {{ producto.stock }}
-        </p>
-
-        <h3>
-          $ {{ producto.precio }}
-        </h3>
-
-        <button
-          (click)="agregarAlCarrito(producto)"
-        >
-          Agregar al carrito
-        </button>
-
-      </div>
-
-    }
-
-  </div>
-
-</section>
+      Productos
+        </h1>
+        
+          <input
+              type="text"
+                  placeholder="Buscar productos..."
+                      [(ngModel)]="busqueda"
+                          class="busqueda"
+                            >
+                            
+                              <div class="productos-grid">
+                              
+                                  @for(producto of productosFiltrados(); track producto){
+                                  
+                                        <div class="card">
+                                        
+                                                <img
+                                                          [src]="producto.imagen"
+                                                                  >
+                                                                  
+                                                                          <h2>
+                                                                                    {{ producto.nombre }}
+                                                                                            </h2>
+                                                                                            
+                                                                                                    <p>
+                                                                                                              {{ producto.categoria }}
+                                                                                                                      </p>
+                                                                                                                      
+                                                                                                                              <p>
+                                                                                                                                        Stock: {{ producto.stock }}
+                                                                                                                                                </p>
+                                                                                                                                                
+                                                                                                                                                        <h3>
+                                                                                                                                                                  $ {{ producto.precio }}
+                                                                                                                                                                          </h3>
+                                                                                                                                                                          
+                                                                                                                                                                                  <button
+                                                                                                                                                                                            (click)="agregarAlCarrito(producto)"
+                                                                                                                                                                                                    >
+                                                                                                                                                                                                              Agregar al carrito
+                                                                                                                                                                                                                      </button>
+                                                                                                                                                                                                                      
+                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                  </section>

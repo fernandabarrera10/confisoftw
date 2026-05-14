@@ -2,45 +2,62 @@
 
 <section class="admin-container">
 
-  <h1>
-    Panel Administrador
-  </h1>
+  <div class="titulo">
+
+    <h1>
+      Panel de Administración
+    </h1>
+
+    <p>
+      Gestión completa de inventario y usuarios
+    </p>
+
+  </div>
 
   <!-- AGREGAR PRODUCTO -->
 
   <div class="formulario-admin">
 
-    <input
-      type="text"
-      placeholder="Nombre"
-      [(ngModel)]="nombre"
-    >
+    <h2>
+      Agregar Producto
+    </h2>
 
-    <input
-      type="number"
-      placeholder="Precio"
-      [(ngModel)]="precio"
-    >
+    <div class="inputs">
 
-    <input
-      type="text"
-      placeholder="Categoría"
-      [(ngModel)]="categoria"
-    >
+      <input
+        type="text"
+        placeholder="Nombre del producto"
+        [(ngModel)]="nombre"
+      >
 
-    <input
-      type="number"
-      placeholder="Stock"
-      [(ngModel)]="stock"
-    >
+      <input
+        type="number"
+        placeholder="Precio"
+        [(ngModel)]="precio"
+      >
 
-    <input
-      type="text"
-      placeholder="URL Imagen"
-      [(ngModel)]="imagen"
-    >
+      <input
+        type="text"
+        placeholder="Categoría"
+        [(ngModel)]="categoria"
+      >
+
+      <input
+        type="number"
+        placeholder="Stock"
+        [(ngModel)]="stock"
+      >
+
+      <input
+        type="text"
+        placeholder="URL de imagen"
+        [(ngModel)]="imagen"
+      >
+
+    </div>
 
     <button
+      class="btn-agregar"
       (click)="agregarProducto()"
     >
       Agregar Producto
@@ -50,44 +67,65 @@
 
   <!-- INVENTARIO -->
 
-  <h2>
-    Inventario
-  </h2>
+  <div class="inventario">
 
-  <div class="inventario-grid">
+    <h2>
+      Inventario de Productos
+    </h2>
 
-    <div
-      class="inventario-card"
-      *ngFor="let producto of productos"
-    >
+    <div class="inventario-grid">
 
-      <img
-        [src]="producto.imagen"
+      <div
+        class="inventario-card"
+        *ngFor="let producto of productos"
       >
 
-      <h3>
-        {{ producto.nombre }}
-      </h3>
+        <img
+          [src]="producto.imagen"
+          [alt]="producto.nombre"
+        >
 
-      <p>
-        Categoría:
-        {{ producto.categoria }}
-      </p>
+        <div class="contenido">
 
-      <p>
-        Stock:
-        {{ producto.stock }}
-      </p>
+          <h3>
+            {{ producto.nombre }}
+          </h3>
 
-      <p>
-        Vendidos:
-        {{ producto.vendidos }}
-      </p>
+          <p>
+            Categoría:
+            {{ producto.categoria }}
+          </p>
 
-      <p>
-        Ganancia:
-        $ {{ producto.vendidos * producto.precio }}
-      </p>
+          <p>
+            Precio:
+            $ {{ producto.precio }}
+          </p>
+
+          <p>
+            Stock:
+            {{ producto.stock }}
+          </p>
+
+          <p>
+            Vendidos:
+            {{ producto.vendidos }}
+          </p>
+
+          <p class="ganancia">
+
+            Ganancia:
+            $
+
+            {{
+              producto.vendidos *
+              producto.precio
+            }}
+
+          </p>
+
+        </div>
+
+      </div>
 
     </div>
 
@@ -95,33 +133,65 @@
 
   <!-- USUARIOS -->
 
-  <h2>
-    Usuarios Registrados
-  </h2>
+  <div class="usuarios">
 
-  <div
-    class="usuario-card"
-    *ngFor="let usuario of usuarios"
-  >
+    <h2>
+      Historial de Usuarios
+    </h2>
 
-    <h3>
-      {{ usuario.nombre }}
-    </h3>
+    <div class="usuarios-grid">
 
-    <p>
-      Estado:
-      {{ usuario.estado }}
-    </p>
+      <div
+        class="usuario-card"
+        *ngFor="let usuario of usuarios"
+      >
 
-    <p>
-      Pedidos:
-      {{ usuario.pedidos }}
-    </p>
+        <img
+          [src]="usuario.foto"
+        >
 
-    <p>
-      Compras:
-      {{ usuario.compras }}
-    </p>
+        <h3>
+          {{ usuario.nombre }}
+        </h3>
+
+        <p>
+          Usuario:
+          {{ usuario.usuario }}
+        </p>
+
+        <p>
+          Rol:
+          {{ usuario.rol }}
+        </p>
+
+        <p>
+
+          Estado:
+
+          <span
+            [class.activo]="usuario.estado === 'Activo'"
+            [class.inactivo]="usuario.estado !== 'Activo'"
+          >
+
+            {{ usuario.estado }}
+
+          </span>
+
+        </p>
+
+        <p>
+          Pedidos:
+          {{ usuario.pedidos }}
+        </p>
+
+        <p>
+          Compras:
+          {{ usuario.compras }}
+        </p>
+
+      </div>
+
+    </div>
 
   </div>
 

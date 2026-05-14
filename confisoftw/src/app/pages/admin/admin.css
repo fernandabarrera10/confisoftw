@@ -1,57 +1,213 @@
 .admin-container{
-  min-height:100vh;
 
-  background:#fbd5e5;
+  padding: 40px;
 
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  background: #f4f7fb;
+
+  min-height: 100vh;
+
 }
 
-.admin-card{
-  background:white;
+.titulo{
 
-  padding:40px;
+  margin-bottom: 40px;
 
-  border-radius:20px;
-
-  width:450px;
-
-  display:flex;
-  flex-direction:column;
-
-  gap:20px;
-
-  text-align:center;
-
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
-.admin-card button{
-  padding:15px;
+.titulo h1{
 
-  border:none;
+  font-size: 45px;
 
-  border-radius:10px;
+  color: #0f172a;
 
-  background:#ff69b4;
-
-  color:white;
-
-  cursor:pointer;
-
-  font-size:18px;
 }
-.mini-foto{
 
-  width:80px;
+.titulo p{
 
-  height:80px;
+  color: #64748b;
 
-  border-radius:50%;
+  font-size: 18px;
 
-  object-fit:cover;
+}
 
-  margin-bottom:15px;
+.formulario-admin{
+
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 20px;
+
+  margin-bottom: 50px;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+
+}
+
+.formulario-admin h2{
+
+  margin-bottom: 20px;
+
+}
+
+.inputs{
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+
+  gap: 20px;
+
+}
+
+.inputs input{
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  border: 2px solid #cbd5e1;
+
+  font-size: 16px;
+
+}
+
+.btn-agregar{
+
+  margin-top: 25px;
+
+  background: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  padding: 15px 25px;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+}
+
+.inventario{
+
+  margin-top: 50px;
+
+}
+
+.inventario-grid{
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+
+  gap: 25px;
+
+  margin-top: 25px;
+
+}
+
+.inventario-card{
+
+  background: white;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+
+}
+
+.inventario-card img{
+
+  width: 100%;
+
+  height: 220px;
+
+  object-fit: cover;
+
+}
+
+.contenido{
+
+  padding: 20px;
+
+}
+
+.contenido h3{
+
+  margin-bottom: 15px;
+
+}
+
+.ganancia{
+
+  color: #16a34a;
+
+  font-weight: bold;
+
+}
+
+.usuarios{
+
+  margin-top: 60px;
+
+}
+
+.usuarios-grid{
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+
+  gap: 25px;
+
+  margin-top: 25px;
+
+}
+
+.usuario-card{
+
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 25px;
+
+  text-align: center;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+
+}
+
+.usuario-card img{
+
+  width: 90px;
+
+  height: 90px;
+
+  border-radius: 50%;
+
+  margin-bottom: 15px;
+
+}
+
+.activo{
+
+  color: #16a34a;
+
+  font-weight: bold;
+
+}
+
+.inactivo{
+
+  color: #dc2626;
+
+  font-weight: bold;
 
 }
