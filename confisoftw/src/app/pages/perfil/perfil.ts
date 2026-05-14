@@ -1,40 +1,64 @@
 import { Component } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { Navbar } from '../../components/navbar/navbar';
 
-import { AuthService } from '../../services/auth.service';
+import { AuthService }
+from '../../services/auth.service';
+
+import { UsuariosService }from '../../services/usuario';
 
 @Component({
   selector: 'app-perfil',
-  imports: [Navbar],
+
+  standalone: true,
+
+  imports: [
+    FormsModule,
+    Navbar
+  ],
+
   templateUrl: './perfil.html',
-  styleUrl: './perfil.css'
+
+  styleUrls: ['./perfil.css']
 })
+
 export class Perfil {
 
+  usuario: any;
+
   constructor(
-    private auth: AuthService,
-    private router: Router
+
+    public auth: AuthService,
+
+    public usuariosService:
+    UsuariosService
+
   ){
 
-    if(!this.auth.verificarLogin()){
-
-      this.router.navigate(['/login']);
-
-    }
+    this.usuario =
+      this.auth.usuarioActual;
 
   }
 
-  usuario = {
+  guardarCambios(){
 
-    nombre: 'Fernanda',
-    apellido: 'Barrera',
-    correo: 'fernanda@gmail.com',
-    telefono: '3200000000',
-    username: 'fernanda10'
+    this.usuariosService
+    .actualizarUsuario(this.usuario);
 
-  };
+    localStorage.setItem(
+
+      'usuario',
+
+      JSON.stringify(this.usuario)
+
+    );
+
+    alert(
+      'Perfil actualizado'
+    );
+
+  }
 
 }

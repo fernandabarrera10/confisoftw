@@ -6,11 +6,13 @@
     Panel Administrador
   </h1>
 
-  <div class="formulario">
+  <!-- AGREGAR PRODUCTO -->
+
+  <div class="formulario-admin">
 
     <input
       type="text"
-      placeholder="Nombre producto"
+      placeholder="Nombre"
       [(ngModel)]="nombre"
     >
 
@@ -22,7 +24,19 @@
 
     <input
       type="text"
-      placeholder="URL imagen"
+      placeholder="Categoría"
+      [(ngModel)]="categoria"
+    >
+
+    <input
+      type="number"
+      placeholder="Stock"
+      [(ngModel)]="stock"
+    >
+
+    <input
+      type="text"
+      placeholder="URL Imagen"
       [(ngModel)]="imagen"
     >
 
@@ -34,27 +48,80 @@
 
   </div>
 
-  <div class="productos">
+  <!-- INVENTARIO -->
 
-    @for(producto of productos; track producto){
+  <h2>
+    Inventario
+  </h2>
 
-      <div class="card">
+  <div class="inventario-grid">
 
-        <img
-          [src]="producto.imagen"
-        >
+    <div
+      class="inventario-card"
+      *ngFor="let producto of productos"
+    >
 
-        <h2>
-          {{ producto.nombre }}
-        </h2>
+      <img
+        [src]="producto.imagen"
+      >
 
-        <p>
-          $ {{ producto.precio }}
-        </p>
+      <h3>
+        {{ producto.nombre }}
+      </h3>
 
-      </div>
+      <p>
+        Categoría:
+        {{ producto.categoria }}
+      </p>
 
-    }
+      <p>
+        Stock:
+        {{ producto.stock }}
+      </p>
+
+      <p>
+        Vendidos:
+        {{ producto.vendidos }}
+      </p>
+
+      <p>
+        Ganancia:
+        $ {{ producto.vendidos * producto.precio }}
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- USUARIOS -->
+
+  <h2>
+    Usuarios Registrados
+  </h2>
+
+  <div
+    class="usuario-card"
+    *ngFor="let usuario of usuarios"
+  >
+
+    <h3>
+      {{ usuario.nombre }}
+    </h3>
+
+    <p>
+      Estado:
+      {{ usuario.estado }}
+    </p>
+
+    <p>
+      Pedidos:
+      {{ usuario.pedidos }}
+    </p>
+
+    <p>
+      Compras:
+      {{ usuario.compras }}
+    </p>
 
   </div>
 

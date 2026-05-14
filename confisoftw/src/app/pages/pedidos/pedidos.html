@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+
+<section class="pedidos-container">
+
+  <h1>
+    Historial de Pedidos
+  </h1>
+
+  <div
+    class="pedido-card"
+    *ngFor="let pedido of pedidos"
+  >
+
+    <h2>
+      {{ pedido.usuario }}
+    </h2>
+
+    <p>
+      Total:
+      $ {{ pedido.total }}
+    </p>
+
+    <p>
+      Fecha:
+      {{ pedido.fecha }}
+    </p>
+
+    <div
+      class="producto"
+      *ngFor="let producto of pedido.productos"
+    >
+
+      <span>
+        {{ producto.nombre }}
+      </span>
+
+      <span>
+        x{{ producto.cantidad }}
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+</section>

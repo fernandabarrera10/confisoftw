@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { UsuariosService } from './usuario';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -8,28 +10,41 @@ export class AuthService {
 
   usuarioActual: any = null;
 
-  usuarios = [
+  constructor(
 
-    {
-      usuario: 'admin',
-      password: '1234',
-      rol: 'admin'
-    },
+    public usuariosService:
+    UsuariosService
 
-    {
-      usuario: 'usuario',
-      password: '1234',
-      rol: 'usuario'
+  ){
+
+    const usuarioGuardado =
+    localStorage.getItem('usuarioActual');
+
+    if(usuarioGuardado){
+
+      this.usuarioActual =
+      JSON.parse(usuarioGuardado);
+
     }
 
-  ];
+  }
 
-  login(usuario: string, password: string){
+  login(
 
-    const encontrado = this.usuarios.find(
+    usuario: string,
 
-      u =>
+    password: string
+
+  ){
+
+    const encontrado =
+
+    this.usuariosService.usuarios.find(
+
+      (u: any) =>
+
         u.usuario === usuario &&
+
         u.password === password
 
     );
@@ -39,33 +54,12 @@ export class AuthService {
       this.usuarioActual = encontrado;
 
       localStorage.setItem(
-        'usuario',
+
+        'usuarioActual',
+
         JSON.stringify(encontrado)
+
       );
-
-      return true;
-
-    }
-
-    return false;
-
-  }
-
-  verificarLogin(){
-
-    if(this.usuarioActual){
-
-      return true;
-
-    }
-
-    const guardado =
-      localStorage.getItem('usuario');
-
-    if(guardado){
-
-      this.usuarioActual =
-        JSON.parse(guardado);
 
       return true;
 
@@ -79,13 +73,27 @@ export class AuthService {
 
     this.usuarioActual = null;
 
-    localStorage.removeItem('usuario');
+    localStorage.removeItem(
+      'usuarioActual'
+    );
+
+  }
+
+  verificarLogin(){
+
+    return this.usuarioActual != null;
 
   }
 
   esAdmin(){
 
     return this.usuarioActual?.rol === 'admin';
+
+  }
+
+  esUsuario(){
+
+    return this.usuarioActual?.rol === 'usuario';
 
   }
 

@@ -8,13 +8,15 @@ import { Register } from './pages/register/register';
 
 import { Perfil } from './pages/perfil/perfil';
 
-import { Productos } from './pages/productos/productos';
+import { Productos } from './pages/productos/productospages';
 
 import { Carrito } from './pages/carrito/carrito';
 
 import { authGuard } from './guards/auth-guard';
 
 import { Admin } from './pages/admin/admin';
+
+import { Pedidos } from './pages/pedidos/pedidos';
 
 export const routes: Routes = [
 
@@ -54,6 +56,12 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: Admin,
+    canActivate: [authGuard]
+  },
+
+  {
+    path: 'pedidos',
+    component: Pedidos,
     canActivate: [authGuard]
   }
 

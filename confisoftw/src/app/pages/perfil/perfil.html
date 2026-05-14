@@ -5,36 +5,62 @@
   <div class="perfil-card">
 
     <img
-      src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-      alt="perfil"
+      [src]="usuario.foto"
+      class="foto-perfil"
     >
 
-    <h1>
-      {{ usuario.nombre }}
-      {{ usuario.apellido }}
-    </h1>
+    <input
+      type="text"
 
-    <div class="info">
+      placeholder="URL Foto"
 
-      <p>
-        <strong>Usuario:</strong>
-        {{ usuario.username }}
-      </p>
+      [(ngModel)]="usuario.foto"
+    >
 
-      <p>
-        <strong>Correo:</strong>
-        {{ usuario.correo }}
-      </p>
+    <input
+      type="text"
 
-      <p>
-        <strong>Teléfono:</strong>
-        {{ usuario.telefono }}
-      </p>
+      placeholder="Nombre"
 
-    </div>
+      [(ngModel)]="usuario.nombre"
+    >
 
-    <button>
-      Editar Perfil
+    <input
+      type="text"
+
+      placeholder="Documento"
+
+      [(ngModel)]="usuario.documento"
+    >
+
+    <input
+      type="text"
+
+      placeholder="Teléfono"
+
+      [(ngModel)]="usuario.telefono"
+    >
+
+    <input
+      type="email"
+
+      placeholder="Correo"
+
+      [(ngModel)]="usuario.correo"
+    >
+
+    <input
+      type="text"
+
+      placeholder="Dirección"
+
+      [(ngModel)]="usuario.direccion"
+    >
+
+    <button
+      (click)="guardarCambios()"
+    >
+      Guardar Cambios
     </button>
 
   </div>

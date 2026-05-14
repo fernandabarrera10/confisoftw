@@ -6,27 +6,43 @@
 
   <nav>
 
-    <a routerLink="">
+    <a routerLink="/">
       Home
     </a>
 
     @if(auth.verificarLogin()){
 
-       <a routerLink="/admin">
-        Admin
-      </a>
-      
-      <a routerLink="/productos">
-        Productos
-      </a>
+      <!-- USUARIO -->
 
-      <a routerLink="/carrito">
-        Carrito
-      </a>
+      @if(auth.usuarioActual?.rol === 'usuario'){
 
-      <a routerLink="/perfil">
-        Mi Perfil
-      </a>
+        <a routerLink="/productos">
+          Productos
+        </a>
+
+        <a routerLink="/carrito">
+          Carrito
+        </a>
+
+        <a routerLink="/pedidos">
+          Mis Pedidos
+        </a>
+
+        <a routerLink="/perfil">
+          Mi Perfil
+        </a>
+
+      }
+
+      <!-- ADMIN -->
+
+      @if(auth.usuarioActual?.rol === 'admin'){
+
+        <a routerLink="/admin">
+          Panel Admin
+        </a>
+
+      }
 
       <a (click)="cerrarSesion()">
         Cerrar Sesión

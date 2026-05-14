@@ -8,30 +8,63 @@ export class CarritoService {
 
   carrito: any[] = [];
 
-  agregarProducto(producto: any){
+  constructor(){
 
-    const existe = this.carrito.find(
-      p => p.nombre === producto.nombre
+    const carritoGuardado =
+
+    localStorage.getItem(
+      'carrito'
     );
 
-    if(existe){
+    if(carritoGuardado){
 
-      existe.cantidad++;
+      this.carrito =
+
+      JSON.parse(
+        carritoGuardado
+      );
+
+    }
+
+  }
+
+  agregarProducto(producto: any){
+
+    const encontrado =
+
+    this.carrito.find(
+
+      (p: any) =>
+
+      p.nombre === producto.nombre
+
+    );
+
+    if(encontrado){
+
+      encontrado.cantidad++;
 
     }else{
 
       this.carrito.push({
+
         ...producto,
+
         cantidad: 1
+
       });
 
     }
+
+    this.guardarCarrito();
 
   }
 
   aumentarCantidad(producto: any){
 
     producto.cantidad++;
+
+    this.guardarCarrito();
 
   }
 
@@ -41,24 +74,85 @@ export class CarritoService {
 
     if(producto.cantidad <= 0){
 
-      this.carrito = this.carrito.filter(
-        p => p !== producto
-      );
+      this.eliminarProducto(producto);
 
     }
+
+    this.guardarCarrito();
+
+  }
+
+  eliminarProducto(producto: any){
+
+    this.carrito =
+
+    this.carrito.filter(
+
+      (p: any) =>
+
+      p !== producto
+
+    );
+
+    this.guardarCarrito();
 
   }
 
   total(){
 
-    return this.carrito.reduce(
+    let total = 0;
 
-      (total, producto) =>
+    this.carrito.forEach(
 
-        total +
-        (producto.precio * producto.cantidad),
+      (producto: any) => {
 
-      0
+        total +=
+
+        producto.precio *
+
+        producto.cantidad;
+
+      }
+
+    );
+
+    return total;
+
+  }
+
+  cantidadProductos(){
+
+    let cantidad = 0;
+
+    this.carrito.forEach(
+
+      (producto: any) => {
+
+        cantidad += producto.cantidad;
+
+      }
+
+    );
+
+    return cantidad;
+
+  }
+
+  limpiarCarrito(){
+
+    this.carrito = [];
+
+    this.guardarCarrito();
+
+  }
+
+  guardarCarrito(){
+
+    localStorage.setItem(
+
+      'carrito',
+
+      JSON.stringify(this.carrito)
 
     );
 

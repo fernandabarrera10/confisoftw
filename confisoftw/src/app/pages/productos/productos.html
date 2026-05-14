@@ -3,18 +3,24 @@
 <section class="productos-container">
 
   <h1>
-    Nuestros Productos
+    Productos
   </h1>
+
+  <input
+    type="text"
+    placeholder="Buscar productos..."
+    [(ngModel)]="busqueda"
+    class="busqueda"
+  >
 
   <div class="productos-grid">
 
-    @for(producto of productos; track producto){
+    @for(producto of productosFiltrados(); track producto){
 
       <div class="card">
 
         <img
           [src]="producto.imagen"
-          [alt]="producto.nombre"
         >
 
         <h2>
@@ -22,28 +28,22 @@
         </h2>
 
         <p>
-          $ {{ producto.precio }}
+          {{ producto.categoria }}
         </p>
 
-        <div class="cantidad">
+        <p>
+          Stock: {{ producto.stock }}
+        </p>
 
-          <button
-            (click)="disminuir(producto)"
-          >
-            -
-          </button>
+        <h3>
+          $ {{ producto.precio }}
+        </h3>
 
-          <span>
-            {{ obtenerCantidad(producto) }}
-          </span>
-
-          <button
-            (click)="agregarAlCarrito(producto)"
-          >
-            +
-          </button>
-
-        </div>
+        <button
+          (click)="agregarAlCarrito(producto)"
+        >
+          Agregar al carrito
+        </button>
 
       </div>
 

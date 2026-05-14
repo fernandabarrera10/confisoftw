@@ -1,7 +1,14 @@
 import { Component } from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
 
+import { CommonModule } from '@angular/common';
+
+import { Router } from '@angular/router';
+
 import { Navbar } from '../../components/navbar/navbar';
+
+import { UsuariosService } from '../../services/usuario';
 
 @Component({
   selector: 'app-register',
@@ -10,34 +17,57 @@ import { Navbar } from '../../components/navbar/navbar';
 
   imports: [
     FormsModule,
+    CommonModule,
     Navbar
   ],
 
   templateUrl: './register.html',
-  styleUrl: './register.css'
+
+  styleUrls: ['./register.css']
 })
 
 export class Register {
 
   nombre = '';
-  apellido = '';
-  correo = '';
-  telefono = '';
+
   usuario = '';
+
   password = '';
+
+  correo = '';
+
+  telefono = '';
+
+  constructor(
+
+    public usuariosService: UsuariosService,
+
+    private router: Router
+
+  ){}
 
   registrar(){
 
-    console.log({
-      nombre: this.nombre,
-      apellido: this.apellido,
-      correo: this.correo,
-      telefono: this.telefono,
-      usuario: this.usuario,
-      password: this.password
-    });
+    const nuevoUsuario = {
 
-    alert('Usuario registrado correctamente');
+      nombre: this.nombre,
+
+      usuario: this.usuario,
+
+      password: this.password,
+
+      correo: this.correo,
+
+      telefono: this.telefono
+
+    };
+
+    this.usuariosService
+    .agregarUsuario(nuevoUsuario);
+
+    alert('Usuario registrado');
+
+    this.router.navigate(['/login']);
 
   }
 
